@@ -1,3 +1,10 @@
+---
+layout: post
+title: Installing Domoticz
+lang: en
+lang-ref: domoticz
+---
+
 # Installing Domoticz
 
 The OpenWrt 10.07 repository contains a rather old version of Domoticz.

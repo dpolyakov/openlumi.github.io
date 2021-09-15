@@ -1,3 +1,11 @@
+---
+layout: post
+title: Flashing over USB
+lang: en
+lang-ref: flashing-over-usb
+---
+
+
 # Flashing over USB
 
 ## Solder usb + uart

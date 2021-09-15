@@ -1,3 +1,10 @@
+---
+layout: post
+title: Gaining root on xiaomi gateway!
+lang: en
+lang-ref: gain-root
+---
+
 # Gaining root
 
 Solder 3 contacts GND, RX, TX to UART:

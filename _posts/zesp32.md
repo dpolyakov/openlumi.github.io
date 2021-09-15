@@ -1,3 +1,11 @@
+---
+layout: post
+title: Installing Zesp32
+lang: en
+lang-ref: zesp32
+---
+
+
 # Installing Zesp32
 
 Zesp will work the same as on the stock firmware, but due to the difference

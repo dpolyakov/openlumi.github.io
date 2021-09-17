@@ -1,3 +1,10 @@
++++
+
+title = "Flashing ZiGate and configuring Zigbee2mqtt"
+
+translationKey = "zigbee2mqtt"
++++
+
 # Flashing ZiGate and configuring Zigbee2mqtt
 
 For the jn5169 chip, which is installed on our gateway, the Zigate firmware is used.

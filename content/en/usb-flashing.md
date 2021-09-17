@@ -1,4 +1,11 @@
-# Flashing over USB
++++
+
+title = "Flashing over USB"
+subtitle = "Flashing firmware over USB DGNWG05LM and ZHWG11LM gateways"
+translationKey = "usb-flashing"
+slug = "flashing-over-usb"
+alias = "usb-flashing"
++++
 
 ## Solder usb + uart
 
@@ -40,7 +47,9 @@ any button. You will have 1 second for this. A command line prompt will appear
 
 Then, in the uboot command line, you need to enter
 
+```shell
     bmode usb
+```
 
 And press enter.
 After that, the gateway will switch to usb boot mode and mfgtools will 

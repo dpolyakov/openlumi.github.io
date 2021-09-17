@@ -1,4 +1,11 @@
-# Gaining root
++++
+
+title = "Gaining root"
+subtitle = "Gaining root DGNWG05LM and ZHWG11LM gateways"
+translationKey = "gain-root"
+slug = "gain-root-on-DGNWG05LM"
+alias = "gain_root"
++++
 
 Solder 3 contacts GND, RX, TX to UART:
 

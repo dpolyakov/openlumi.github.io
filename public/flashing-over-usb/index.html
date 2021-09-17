@@ -1,0 +1,140 @@
+<!doctype html><html lang=en-us>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=hugo-theme content="Axiom 0.8.0">
+<link rel=icon type=image/png sizes=32x32 href=/openlumi.github.io/>
+<link rel=icon type=image/x-icon href=/openlumi.github.io/>
+<link rel=apple-touch-icon href=/openlumi.github.io/>
+<link rel=canonical href=https://dpolyakov.github.io/openlumi.github.io/flashing-over-usb/>
+<link rel=preload as=style href="/openlumi.github.io/bundle.css?v=1631896254" media=all>
+<link rel=stylesheet href="/openlumi.github.io/bundle.css?v=1631896254" media=all>
+<style>.cdata pre{background-color:#1f2937;color:#e5e7eb}.cdata :not(pre)>code{background-color:#f3f4f6;color:#7c3aed}.chroma .err{background-color:#991b1b;color:#fecaca}.chroma .hl{background-color:#374151}.chroma .ln{color:#9ca3af}.chroma .k,.chroma .kc,.chroma .kd,.chroma .kn,.chroma .kp,.chroma .kr{color:#60a5fa}.chroma .kt{color:#a78bfa}.chroma .na,.chroma .nb{color:#fbbf24}.chroma .nc{color:#f87171}.chroma .no{color:#34d399}.chroma .nd{color:#f87171}.chroma .ne{color:#f87171}.chroma .nf{color:#fbbf24}.chroma .nt{color:#f87171}.chroma .l{color:#a78bfa}.chroma .dl,.chroma .ld,.chroma .s,.chroma .s2,.chroma .sa,.chroma .sb,.chroma .sc,.chroma .sd{color:#34d399}.chroma .se{color:#9ca3af}.chroma .s1,.chroma .sh,.chroma .si,.chroma .sr,.chroma .ss,.chroma .sx{color:#34d399}.chroma .il,.chroma .m,.chroma .mb,.chroma .mf,.chroma .mh,.chroma .mi,.chroma .mo{color:#a78bfa}.chroma .o,.chroma .ow{color:#93c5fd}.chroma .c,.chroma .c1,.chroma .ch,.chroma .cm,.chroma .cp,.chroma .cpf,.chroma .cs,.chroma .p{color:#9ca3af}.chroma .ge{font-style:italic}.chroma .gs{font-weight:700}</style>
+<title>Flashing over USB : OpenWrt on DGNWG05LM and ZHWG11LM gateways</title>
+<meta property="og:title" content="Flashing over USB">
+<meta property="og:site_name" content="OpenWrt on DGNWG05LM and ZHWG11LM gateways">
+<meta property="og:url" content="https://dpolyakov.github.io/openlumi.github.io/flashing-over-usb/">
+<link rel=image_src href=https://dpolyakov.github.io/openlumi.github.io/>
+<meta property="og:image" content="https://dpolyakov.github.io/openlumi.github.io/">
+<meta property="og:image:width" content>
+<meta property="og:image:height" content>
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:description" content="Solder usb + uart To modify the firmware you need to make hardware modifications, solder 7 wires to the gateway itself  3 wires for the usb2uart adapter (you did this at the stage of receiving the root) 4 wires per usb connector, or a wire with a usb plug at the end. It is enough to solder 4 wires, + 5v, d +, d- and gnd. ID contact is not used Check that d + and d- are not reversed, otherwise the device will not be detected  Flashing We have prepared an archive with the mfgtools program for downloading the firmware to the gateway, as well as the firmware itself.">
+<meta name=description content="Solder usb + uart To modify the firmware you need to make hardware modifications, solder 7 wires to the gateway itself  3 wires for the usb2uart adapter (you did this at the stage of receiving the root) 4 wires per usb connector, or a wire with a usb plug at the end. It is enough to solder 4 wires, + 5v, d +, d- and gnd. ID contact is not used Check that d + and d- are not reversed, otherwise the device will not be detected  Flashing We have prepared an archive with the mfgtools program for downloading the firmware to the gateway, as well as the firmware itself.">
+<meta property="og:updated_time" content="0001-01-01T00:00:00Z">
+<meta property="fb:app_id" content>
+<meta name=author content="Unknown">
+<meta property="article:author" content="https://dpolyakov.github.io/openlumi.github.io">
+<meta property="article:published_time" content="0001-01-01T00:00:00Z">
+<meta property="article:modified_time" content="0001-01-01T00:00:00Z">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","headline":"Flashing over USB","alternativeHeadline":"Flashing firmware over USB DGNWG05LM and ZHWG11LM gateways","url":"https://dpolyakov.github.io/openlumi.github.io/flashing-over-usb/","image":"https://dpolyakov.github.io/openlumi.github.io/","mainEntityOfPage":{"@type":"WebPage","@id":"https://dpolyakov.github.io/openlumi.github.io/flashing-over-usb/"},"description":"Solder usb + uart To modify the firmware you need to make hardware modifications, solder 7 wires to the gateway itself  3 wires for the usb2uart adapter (you did this at the stage of receiving the root) 4 wires per usb connector, or a wire with a usb plug at the end. It is enough to solder 4 wires, + 5v, d +, d- and gnd. ID contact is not used Check that d + and d- are not reversed, otherwise the device will not be detected  Flashing We have prepared an archive with the mfgtools program for downloading the firmware to the gateway, as well as the firmware itself.","author":{"@type":"Person","name":"Unknown"},"publisher":{"@type":"Organization","name":"OpenWrt on DGNWG05LM and ZHWG11LM gateways","logo":{"@type":"ImageObject","url":"https://dpolyakov.github.io/openlumi.github.io/"}},"datePublished":"0001-01-01T00:00:00Z","dateModified":"0001-01-01T00:00:00Z","articleBody":"\u003ch2 id=\"solder-usb--uart\"\u003eSolder usb + uart\u003c/h2\u003e\n\u003cp\u003eTo modify the firmware you need to make hardware modifications,\nsolder 7 wires to the gateway itself\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e3 wires for the usb2uart adapter (you did this at the stage of receiving the root)\u003c/li\u003e\n\u003cli\u003e4 wires per usb connector, or a wire with a usb plug at the end.\nIt is enough to solder 4 wires, + 5v, d +, d- and gnd.\nID contact is not used\nCheck that d + and d- are not reversed, otherwise the device will not be detected\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e\u003cimg src=\"images/gateway_pinout.jpg\" alt=\"Pinout of UART and USB on the gateway\" title=\"How to solder wires\"\u003e\u003c/p\u003e\n\u003ch2 id=\"flashing\"\u003eFlashing\u003c/h2\u003e\n\u003cp\u003eWe have prepared an archive with the mfgtools program for downloading the firmware to the gateway,\nas well as the firmware itself. The archive includes a program for windows\nand a console application for linux\u003c/p\u003e\n\u003cp\u003e\u003ca href=\"files/mfgtools-19.07.7-20210224.zip\"\u003eVersion 19.07.7 2021-02-24\u003c/a\u003e\u003c/p\u003e\n\u003ch3 id=\"connect-the-gateway-to-your-computer\"\u003eConnect the gateway to your computer\u003c/h3\u003e\n\u003cp\u003eYou need to connect the gateway with two cables to your computer. UART and USB.\nUSB at this stage will not be detected in the computer.\nTo connect to the gateway console, for windows use\nthe PuTTY program and use the COM port that appeared for usb2uart dongle.\nFor linux use any terminal program like\n\u003ccode\u003epicocom /dev/ttyUSB0 -b 115200\u003c/code\u003e\u003c/p\u003e\n\u003ch3 id=\"switch-to-usb-download-mode\"\u003eSwitch to USB download mode\u003c/h3\u003e\n\u003cp\u003eIn order to switch to the firmware mode, you need to start the gateway in\nconsole on the serial port abort uboot by pressing\nany button. You will have 1 second for this. A command line prompt will appear\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e=\u0026gt;\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eThen, in the uboot command line, you need to enter\u003c/p\u003e\n\u003cdiv class=\"highlight\"\u003e\u003cpre tabindex=\"0\" style=\"color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4\"\u003e\u003ccode class=\"language-shell\" data-lang=\"shell\"\u003e    bmode usb\n\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\u003cp\u003eAnd press enter.\nAfter that, the gateway will switch to usb boot mode and mfgtools will\nbe able to update partitions of the flash memory of the gateway.\u003c/p\u003e\n\u003cp\u003e\u003cimg src=\"images/bmode_usb.png\" alt=\"Switch to USB Boot Mode\" title=\"Switch to USB Boot Mode\"\u003e\u003c/p\u003e\n\u003cp\u003eIf you have Windows, you may need to install drivers from the Drivers folder.\u003c/p\u003e\n\u003cp\u003eRun mfgtools.\u003c/p\u003e\n\u003ch4 id=\"windows\"\u003eWindows\u003c/h4\u003e\n\u003cp\u003eIn case of windows, a window will open. If everything is soldered correctly,\nand the driver is installed properly, the line in the program will show\nHID-compliant device\n\u003cimg src=\"images/mfgtools_win.png\" alt=\"Mfgtools\" title=\"Mfgtools\"\u003e\u003c/p\u003e\n\u003cp\u003eYou need to press the Start button to start the flashing.\u003c/p\u003e\n\u003cp\u003eAfter the end of the flashing, when the progress bar reaches the end and\nturns green, you need to press Stop. If you failed to do that, after a few\nminutes, the program will restart the flashing process, and it would lead\nto an error. If that happened, restart the gateway and repeat the\nprocess starting from the putting the gateway to \u003ccode\u003ebmode usb\u003c/code\u003e.\u003c/p\u003e\n\u003ch4 id=\"linux\"\u003eLinux\u003c/h4\u003e\n\u003cp\u003eGo to the firmware folder. Run the console application as superuser\u003c/p\u003e\n\u003cdiv class=\"highlight\"\u003e\u003cpre tabindex=\"0\" style=\"color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4\"\u003e\u003ccode class=\"language-shell\" data-lang=\"shell\"\u003esudo ./mfgtoolcli -p \u003cspan style=\"color:#ae81ff\"\u003e1\u003c/span\u003e\n\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\u003cp\u003eThe pseudo-graphic interface will see the stages of the flashing process\u003c/p\u003e\n\u003cp\u003e\u003cimg src=\"images/mfgtools_lin.png\" alt=\"Mfgtools\"\u003e\u003c/p\u003e\n\u003cp\u003eWhen the gateway is connected, and the hid device is detected, the program will\nimmediately start the flashing process. If the process does not go through,\ncheck that the device is connected and detected in the output of the \u003ccode\u003edmesg\u003c/code\u003e\ncommand.\u003c/p\u003e\n\u003ch3 id=\"flashing-process\"\u003eFlashing process\u003c/h3\u003e\n\u003cp\u003eYou can also follow the firmware stages in the output console of the gateway itself.\nAt the end of the firmware, the console will display\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003eUpdate Complete!\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e\u003cimg src=\"images/update_complete.png\" alt=\"Update complete\"\u003e\u003c/p\u003e\n\u003cp\u003eAfter that, you can reboot the gateway. Unplug it and plug it back in.\nSometimes the gateway hangs on the final stage. If nothing happens for\n5 minutes, then highly likely the flashing process was successfully finished,\nand you can restart the gateway.\u003c/p\u003e\n\u003ch1 id=\"dont-forget-to-connect-the-antennas\"\u003eDon\u0026rsquo;t forget to connect the antennas!\u003c/h1\u003e\n\u003cp\u003eOtherwise, problems with connecting to the network are inevitable\u003c/p\u003e"}</script>
+<link rel=preload as=script href="/openlumi.github.io/bundle.js?v=1631896254">
+</head>
+<body>
+<header id=nav class=header>
+<div class="ax-l-i max-w-6xl">
+<div class=ax-logo>
+<a class=block href=/openlumi.github.io/ title="OpenWrt on DGNWG05LM and ZHWG11LM gateways"><span class="font-semibold text-raven-900">OpenWrt on DGNWG05LM and ZHWG11LM gateways</span></a>
+</div>
+<div class=ax-user>
+<a class="p-2 w-8 h-8 block text-raven-500 hover:text-gray-800 focus:text-gray-800 focus:outline-none" target=_blank rel="noopener nofollow" href="https://www.google.com/search?q=site:https://dpolyakov.github.io/openlumi.github.io/" title=Search><svg class="fill-current" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M2.67 12.804c0-5.6 4.544-10.134 10.133-10.134s10.134 4.544 10.134 10.134-4.544 10.133-10.134 10.133S2.67 18.393 2.67 12.804zm28.943 16.923-8.868-8.868c4.287-5.3 3.68-13.012-1.378-17.57S8.564-1.066 3.75 3.75s-5.017 12.558-.46 17.618 12.28 5.665 17.57 1.378l8.868 8.868a1.33 1.33.0 002.231-.597c.123-.46-.008-.952-.345-1.29h0z"/></svg>
+</a>
+</div>
+</div>
+</header>
+<main>
+<div class=page-single>
+<div class="ax-content ax-l-o">
+<div class="ax-l-i max-w-680">
+<h1 class="page-title font-content-title font-normal leading-tight tracking-default text-40">Flashing over USB</h1>
+<article class="cdata mt-8">
+<h2 id=solder-usb--uart>Solder usb + uart</h2>
+<p>To modify the firmware you need to make hardware modifications,
+solder 7 wires to the gateway itself</p>
+<ul>
+<li>3 wires for the usb2uart adapter (you did this at the stage of receiving the root)</li>
+<li>4 wires per usb connector, or a wire with a usb plug at the end.
+It is enough to solder 4 wires, + 5v, d +, d- and gnd.
+ID contact is not used
+Check that d + and d- are not reversed, otherwise the device will not be detected</li>
+</ul>
+<p><img src=images/gateway_pinout.jpg alt="Pinout of UART and USB on the gateway" title="How to solder wires"></p>
+<h2 id=flashing>Flashing</h2>
+<p>We have prepared an archive with the mfgtools program for downloading the firmware to the gateway,
+as well as the firmware itself. The archive includes a program for windows
+and a console application for linux</p>
+<p><a href=files/mfgtools-19.07.7-20210224.zip>Version 19.07.7 2021-02-24</a></p>
+<h3 id=connect-the-gateway-to-your-computer>Connect the gateway to your computer</h3>
+<p>You need to connect the gateway with two cables to your computer. UART and USB.
+USB at this stage will not be detected in the computer.
+To connect to the gateway console, for windows use
+the PuTTY program and use the COM port that appeared for usb2uart dongle.
+For linux use any terminal program like
+<code>picocom /dev/ttyUSB0 -b 115200</code></p>
+<h3 id=switch-to-usb-download-mode>Switch to USB download mode</h3>
+<p>In order to switch to the firmware mode, you need to start the gateway in
+console on the serial port abort uboot by pressing
+any button. You will have 1 second for this. A command line prompt will appear</p>
+<pre><code>=&gt;
+</code></pre>
+<p>Then, in the uboot command line, you need to enter</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>    bmode usb
+</code></pre></div><p>And press enter.
+After that, the gateway will switch to usb boot mode and mfgtools will
+be able to update partitions of the flash memory of the gateway.</p>
+<p><img src=images/bmode_usb.png alt="Switch to USB Boot Mode" title="Switch to USB Boot Mode"></p>
+<p>If you have Windows, you may need to install drivers from the Drivers folder.</p>
+<p>Run mfgtools.</p>
+<h4 id=windows>Windows</h4>
+<p>In case of windows, a window will open. If everything is soldered correctly,
+and the driver is installed properly, the line in the program will show
+HID-compliant device
+<img src=images/mfgtools_win.png alt=Mfgtools title=Mfgtools></p>
+<p>You need to press the Start button to start the flashing.</p>
+<p>After the end of the flashing, when the progress bar reaches the end and
+turns green, you need to press Stop. If you failed to do that, after a few
+minutes, the program will restart the flashing process, and it would lead
+to an error. If that happened, restart the gateway and repeat the
+process starting from the putting the gateway to <code>bmode usb</code>.</p>
+<h4 id=linux>Linux</h4>
+<p>Go to the firmware folder. Run the console application as superuser</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>sudo ./mfgtoolcli -p <span style=color:#ae81ff>1</span>
+</code></pre></div><p>The pseudo-graphic interface will see the stages of the flashing process</p>
+<p><img src=images/mfgtools_lin.png alt=Mfgtools></p>
+<p>When the gateway is connected, and the hid device is detected, the program will
+immediately start the flashing process. If the process does not go through,
+check that the device is connected and detected in the output of the <code>dmesg</code>
+command.</p>
+<h3 id=flashing-process>Flashing process</h3>
+<p>You can also follow the firmware stages in the output console of the gateway itself.
+At the end of the firmware, the console will display</p>
+<pre><code>Update Complete!
+</code></pre>
+<p><img src=images/update_complete.png alt="Update complete"></p>
+<p>After that, you can reboot the gateway. Unplug it and plug it back in.
+Sometimes the gateway hangs on the final stage. If nothing happens for
+5 minutes, then highly likely the flashing process was successfully finished,
+and you can restart the gateway.</p>
+<h1 id=dont-forget-to-connect-the-antennas>Don&rsquo;t forget to connect the antennas!</h1>
+<p>Otherwise, problems with connecting to the network are inevitable</p>
+</article>
+</div>
+</div>
+</div>
+</main>
+<footer class=footer>
+<div class="ax-l-i max-w-6xl">
+<nav class="flex items-center justify-center">
+</nav>
+<div class="footer-copyright text-sm text-center text-gray-400 mt-4">
+&#169; -2021 OpenWrt on DGNWG05LM and ZHWG11LM gateways
+</div>
+<div class="text-sm sm:text-xs text-center text-gray-400 mt-2">
+Powered by <a href="https://www.axiomtheme.com/?utm_source=theme-footer&utm_medium=website&utm_campaign=referral">Axiom</a>
+</div>
+</div>
+</footer>
+<script src="/openlumi.github.io/bundle.js?v=1631896254"></script>
+</body>
+</html>

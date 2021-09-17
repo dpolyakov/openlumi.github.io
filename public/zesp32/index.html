@@ -1,0 +1,111 @@
+<!doctype html><html lang=en-us>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=hugo-theme content="Axiom 0.8.0">
+<link rel=icon type=image/png sizes=32x32 href=/openlumi.github.io/>
+<link rel=icon type=image/x-icon href=/openlumi.github.io/>
+<link rel=apple-touch-icon href=/openlumi.github.io/>
+<link rel=canonical href=https://dpolyakov.github.io/openlumi.github.io/zesp32/>
+<link rel=preload as=style href="/openlumi.github.io/bundle.css?v=1631896254" media=all>
+<link rel=stylesheet href="/openlumi.github.io/bundle.css?v=1631896254" media=all>
+<style>.cdata pre{background-color:#1f2937;color:#e5e7eb}.cdata :not(pre)>code{background-color:#f3f4f6;color:#7c3aed}.chroma .err{background-color:#991b1b;color:#fecaca}.chroma .hl{background-color:#374151}.chroma .ln{color:#9ca3af}.chroma .k,.chroma .kc,.chroma .kd,.chroma .kn,.chroma .kp,.chroma .kr{color:#60a5fa}.chroma .kt{color:#a78bfa}.chroma .na,.chroma .nb{color:#fbbf24}.chroma .nc{color:#f87171}.chroma .no{color:#34d399}.chroma .nd{color:#f87171}.chroma .ne{color:#f87171}.chroma .nf{color:#fbbf24}.chroma .nt{color:#f87171}.chroma .l{color:#a78bfa}.chroma .dl,.chroma .ld,.chroma .s,.chroma .s2,.chroma .sa,.chroma .sb,.chroma .sc,.chroma .sd{color:#34d399}.chroma .se{color:#9ca3af}.chroma .s1,.chroma .sh,.chroma .si,.chroma .sr,.chroma .ss,.chroma .sx{color:#34d399}.chroma .il,.chroma .m,.chroma .mb,.chroma .mf,.chroma .mh,.chroma .mi,.chroma .mo{color:#a78bfa}.chroma .o,.chroma .ow{color:#93c5fd}.chroma .c,.chroma .c1,.chroma .ch,.chroma .cm,.chroma .cp,.chroma .cpf,.chroma .cs,.chroma .p{color:#9ca3af}.chroma .ge{font-style:italic}.chroma .gs{font-weight:700}</style>
+<title>Installing Zesp32 : OpenWrt on DGNWG05LM and ZHWG11LM gateways</title>
+<meta property="og:title" content="Installing Zesp32">
+<meta property="og:site_name" content="OpenWrt on DGNWG05LM and ZHWG11LM gateways">
+<meta property="og:url" content="https://dpolyakov.github.io/openlumi.github.io/zesp32/">
+<link rel=image_src href=https://dpolyakov.github.io/openlumi.github.io/>
+<meta property="og:image" content="https://dpolyakov.github.io/openlumi.github.io/">
+<meta property="og:image:width" content>
+<meta property="og:image:height" content>
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:description" content="Zesp will work the same as on the stock firmware, but due to the difference in system libraries, additional steps are required 1. Installing nodejs and zesp32 Add the package repository for the openlumi project (! grep -q openlumi /etc/opkg/customfeeds.conf /etc/opkg/distfeeds.conf) &amp;amp;&amp;amp; ( wget -q https://openlumi.github.io/openwrt-packages/public.key -O /tmp/public.key &amp;amp;&amp;amp; opkg-key add /tmp/public.key &amp;amp;&amp;amp; rm /tmp/public.key &amp;amp;&amp;amp; (cat /etc/openwrt_release | grep 21.02 &amp;gt; /dev/null &amp;amp;&amp;amp; ( echo 'src/gz openlumi_base https://openlumi.github.io/releases/21.02.0--dgnwg05lm/packages/arm_cortex-a9_neon/base&amp;amp;#39; &amp;gt;&amp;gt; /etc/opkg/customfeeds.">
+<meta name=description content="Zesp will work the same as on the stock firmware, but due to the difference in system libraries, additional steps are required 1. Installing nodejs and zesp32 Add the package repository for the openlumi project (! grep -q openlumi /etc/opkg/customfeeds.conf /etc/opkg/distfeeds.conf) &amp;amp;&amp;amp; ( wget -q https://openlumi.github.io/openwrt-packages/public.key -O /tmp/public.key &amp;amp;&amp;amp; opkg-key add /tmp/public.key &amp;amp;&amp;amp; rm /tmp/public.key &amp;amp;&amp;amp; (cat /etc/openwrt_release | grep 21.02 &amp;gt; /dev/null &amp;amp;&amp;amp; ( echo 'src/gz openlumi_base https://openlumi.github.io/releases/21.02.0--dgnwg05lm/packages/arm_cortex-a9_neon/base&amp;amp;#39; &amp;gt;&amp;gt; /etc/opkg/customfeeds.">
+<meta property="og:updated_time" content="0001-01-01T00:00:00Z">
+<meta property="fb:app_id" content>
+<meta name=author content="Unknown">
+<meta property="article:author" content="https://dpolyakov.github.io/openlumi.github.io">
+<meta property="article:published_time" content="0001-01-01T00:00:00Z">
+<meta property="article:modified_time" content="0001-01-01T00:00:00Z">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","headline":"Installing Zesp32","alternativeHeadline":"Zesp will work the same as on the stock firmware, but due to the difference in system libraries, additional steps are required 1. Installing nodejs and zesp32 Add the package repository for the openlumi project (! grep -q openlumi /etc/opkg/customfeeds.conf /etc/opkg/distfeeds.conf) \u0026amp;\u0026amp; ( wget -q https://openlumi.github.io/openwrt-packages/public.key -O /tmp/public.key \u0026amp;\u0026amp; opkg-key add /tmp/public.key \u0026amp;\u0026amp; rm /tmp/public.key \u0026amp;\u0026amp; (cat /etc/openwrt_release | grep 21.02 \u0026gt; /dev/null \u0026amp;\u0026amp; ( echo 'src/gz openlumi_base https://openlumi.github.io/releases/21.02.0--dgnwg05lm/packages/arm_cortex-a9_neon/base\u0026amp;#39; \u0026gt;\u0026gt; /etc/opkg/customfeeds.","url":"https://dpolyakov.github.io/openlumi.github.io/zesp32/","image":"https://dpolyakov.github.io/openlumi.github.io/","mainEntityOfPage":{"@type":"WebPage","@id":"https://dpolyakov.github.io/openlumi.github.io/zesp32/"},"description":"Zesp will work the same as on the stock firmware, but due to the difference in system libraries, additional steps are required 1. Installing nodejs and zesp32 Add the package repository for the openlumi project (! grep -q openlumi /etc/opkg/customfeeds.conf /etc/opkg/distfeeds.conf) \u0026amp;\u0026amp; ( wget -q https://openlumi.github.io/openwrt-packages/public.key -O /tmp/public.key \u0026amp;\u0026amp; opkg-key add /tmp/public.key \u0026amp;\u0026amp; rm /tmp/public.key \u0026amp;\u0026amp; (cat /etc/openwrt_release | grep 21.02 \u0026gt; /dev/null \u0026amp;\u0026amp; ( echo 'src/gz openlumi_base https://openlumi.github.io/releases/21.02.0--dgnwg05lm/packages/arm_cortex-a9_neon/base\u0026amp;#39; \u0026gt;\u0026gt; /etc/opkg/customfeeds.","author":{"@type":"Person","name":"Unknown"},"publisher":{"@type":"Organization","name":"OpenWrt on DGNWG05LM and ZHWG11LM gateways","logo":{"@type":"ImageObject","url":"https://dpolyakov.github.io/openlumi.github.io/"}},"datePublished":"0001-01-01T00:00:00Z","dateModified":"0001-01-01T00:00:00Z","articleBody":"\u003cp\u003eZesp will work the same as on the stock firmware, but due to the difference\nin system libraries, additional steps are required\u003c/p\u003e\n\u003ch3 id=\"1-installing-nodejs-and-zesp32\"\u003e1. Installing nodejs and zesp32\u003c/h3\u003e\n\u003cp\u003eAdd the package repository for the openlumi project\u003c/p\u003e\n\u003cdiv class=\"highlight\"\u003e\u003cpre tabindex=\"0\" style=\"color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4\"\u003e\u003ccode class=\"language-shell\" data-lang=\"shell\"\u003e\u003cspan style=\"color:#f92672\"\u003e(\u003c/span\u003e! grep -q openlumi /etc/opkg/customfeeds.conf /etc/opkg/distfeeds.conf\u003cspan style=\"color:#f92672\"\u003e)\u003c/span\u003e \u003cspan style=\"color:#f92672\"\u003e\u0026amp;\u0026amp;\u003c/span\u003e \u003cspan style=\"color:#f92672\"\u003e(\u003c/span\u003e\nwget -q https://openlumi.github.io/openwrt-packages/public.key -O /tmp/public.key \u003cspan style=\"color:#f92672\"\u003e\u0026amp;\u0026amp;\u003c/span\u003e \nopkg-key add /tmp/public.key \u003cspan style=\"color:#f92672\"\u003e\u0026amp;\u0026amp;\u003c/span\u003e rm /tmp/public.key \u003cspan style=\"color:#f92672\"\u003e\u0026amp;\u0026amp;\u003c/span\u003e\n\u003cspan style=\"color:#f92672\"\u003e(\u003c/span\u003ecat /etc/openwrt_release  | grep 21.02 \u0026gt; /dev/null \u003cspan style=\"color:#f92672\"\u003e\u0026amp;\u0026amp;\u003c/span\u003e \u003cspan style=\"color:#f92672\"\u003e(\u003c/span\u003e\necho \u003cspan style=\"color:#e6db74\"\u003e\u0026#39;src/gz openlumi_base https://openlumi.github.io/releases/21.02.0--dgnwg05lm/packages/arm_cortex-a9_neon/base\u0026#39;\u003c/span\u003e \u0026gt;\u0026gt; /etc/opkg/customfeeds.conf \u003cspan style=\"color:#f92672\"\u003e\u0026amp;\u0026amp;\u003c/span\u003e\necho \u003cspan style=\"color:#e6db74\"\u003e\u0026#39;src/gz openlumi_node https://openlumi.github.io/releases/21.02.0--dgnwg05lm/packages/arm_cortex-a9_neon/node\u0026#39;\u003c/span\u003e \u0026gt;\u0026gt; /etc/opkg/customfeeds.conf \u003cspan style=\"color:#f92672\"\u003e\u0026amp;\u0026amp;\u003c/span\u003e\necho \u003cspan style=\"color:#e6db74\"\u003e\u0026#39;src/gz openlumi_openlumi https://openlumi.github.io/releases/21.02.0--dgnwg05lm/packages/arm_cortex-a9_neon/openlumi\u0026#39;\u003c/span\u003e \u0026gt;\u0026gt; /etc/opkg/customfeeds.conf\n\u003cspan style=\"color:#f92672\"\u003e)\u003c/span\u003e \u003cspan style=\"color:#f92672\"\u003e||\u003c/span\u003e \u003cspan style=\"color:#f92672\"\u003e(\u003c/span\u003e\necho \u003cspan style=\"color:#e6db74\"\u003e\u0026#39;src/gz openlumi https://openlumi.github.io/openwrt-packages/packages/19.07/arm_cortex-a9_neon\u0026#39;\u003c/span\u003e \u0026gt;\u0026gt; /etc/opkg/customfeeds.conf\n\u003cspan style=\"color:#f92672\"\u003e))\u003c/span\u003e \u003cspan style=\"color:#f92672\"\u003e\u0026amp;\u0026amp;\u003c/span\u003e\necho \u003cspan style=\"color:#e6db74\"\u003e\u0026#34;Feed added successfully!\u0026#34;\u003c/span\u003e\n\u003cspan style=\"color:#f92672\"\u003e)\u003c/span\u003e \u003cspan style=\"color:#f92672\"\u003e||\u003c/span\u003e echo \u003cspan style=\"color:#e6db74\"\u003e\u0026#34;Feed added already. Skip.\u0026#34;\u003c/span\u003e\n\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\u003cp\u003eInstall packages on the gateway\u003c/p\u003e\n\u003cdiv class=\"highlight\"\u003e\u003cpre tabindex=\"0\" style=\"color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4\"\u003e\u003ccode class=\"language-shell\" data-lang=\"shell\"\u003eopkg update\nopkg install node node-npm\ncd /tmp\nwget http://82.146.46.112/fw/ZESPowrt.tar.gz\nwget http://82.146.46.112/fw/update.tar.gz\ntar -xzvf ZESPowrt.tar.gz -C /\ntar -xzvf update.tar.gz -C /\nwget https://raw.githubusercontent.com/openlumi/openlumi.github.io/master/files/zesp32.init -O /etc/init.d/zesp32\nchmod +x /etc/init.d/zesp32\nwget https://raw.githubusercontent.com/openlumi/openlumi.github.io/master/files/zesp32-package.json -O /opt/app/package.json\n/etc/init.d/zesp32 enable\n/etc/init.d/zesp32 start\n\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\u003ch3 id=\"2-zigbee-firmware\"\u003e2. Zigbee firmware.\u003c/h3\u003e\n\u003cp\u003eYou can skip this step if you already have a Zesp zigbee firmware flashed.\u003c/p\u003e\n\u003cp\u003eStop zesp32\u003c/p\u003e\n\u003cdiv class=\"highlight\"\u003e\u003cpre tabindex=\"0\" style=\"color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4\"\u003e\u003ccode class=\"language-shell\" data-lang=\"shell\"\u003ekillall node\n\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\u003cp\u003eTo flash the zigbee firmware enter the following command\u003c/p\u003e\n\u003cdiv class=\"highlight\"\u003e\u003cpre tabindex=\"0\" style=\"color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4\"\u003e\u003ccode class=\"language-shell\" data-lang=\"shell\"\u003ejnflash /opt/app/util/Zigbee.bin\njntool erase_pdm\n\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\u003cp\u003eIt will update the firmware in the jn5169 module.\nNow you can start zesp32 again\u003c/p\u003e\n\u003cdiv class=\"highlight\"\u003e\u003cpre tabindex=\"0\" style=\"color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4\"\u003e\u003ccode class=\"language-shell\" data-lang=\"shell\"\u003e/etc/init.d/zesp32 restart\n\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\u003cp\u003eZesp32 interface will be available on \u003ccode\u003ehttp://*GATEWAY_IP*:8081/\u003c/code\u003e\u003c/p\u003e"}</script>
+<link rel=preload as=script href="/openlumi.github.io/bundle.js?v=1631896254">
+</head>
+<body>
+<header id=nav class=header>
+<div class="ax-l-i max-w-6xl">
+<div class=ax-logo>
+<a class=block href=/openlumi.github.io/ title="OpenWrt on DGNWG05LM and ZHWG11LM gateways"><span class="font-semibold text-raven-900">OpenWrt on DGNWG05LM and ZHWG11LM gateways</span></a>
+</div>
+<div class=ax-user>
+<a class="p-2 w-8 h-8 block text-raven-500 hover:text-gray-800 focus:text-gray-800 focus:outline-none" target=_blank rel="noopener nofollow" href="https://www.google.com/search?q=site:https://dpolyakov.github.io/openlumi.github.io/" title=Search><svg class="fill-current" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M2.67 12.804c0-5.6 4.544-10.134 10.133-10.134s10.134 4.544 10.134 10.134-4.544 10.133-10.134 10.133S2.67 18.393 2.67 12.804zm28.943 16.923-8.868-8.868c4.287-5.3 3.68-13.012-1.378-17.57S8.564-1.066 3.75 3.75s-5.017 12.558-.46 17.618 12.28 5.665 17.57 1.378l8.868 8.868a1.33 1.33.0 002.231-.597c.123-.46-.008-.952-.345-1.29h0z"/></svg>
+</a>
+</div>
+</div>
+</header>
+<main>
+<div class=page-single>
+<div class="ax-content ax-l-o">
+<div class="ax-l-i max-w-680">
+<h1 class="page-title font-content-title font-normal leading-tight tracking-default text-40">Installing Zesp32</h1>
+<article class="cdata mt-8">
+<p>Zesp will work the same as on the stock firmware, but due to the difference
+in system libraries, additional steps are required</p>
+<h3 id=1-installing-nodejs-and-zesp32>1. Installing nodejs and zesp32</h3>
+<p>Add the package repository for the openlumi project</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#f92672>(</span>! grep -q openlumi /etc/opkg/customfeeds.conf /etc/opkg/distfeeds.conf<span style=color:#f92672>)</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#f92672>(</span>
+wget -q https://openlumi.github.io/openwrt-packages/public.key -O /tmp/public.key <span style=color:#f92672>&amp;&amp;</span> 
+opkg-key add /tmp/public.key <span style=color:#f92672>&amp;&amp;</span> rm /tmp/public.key <span style=color:#f92672>&amp;&amp;</span>
+<span style=color:#f92672>(</span>cat /etc/openwrt_release  | grep 21.02 &gt; /dev/null <span style=color:#f92672>&amp;&amp;</span> <span style=color:#f92672>(</span>
+echo <span style=color:#e6db74>&#39;src/gz openlumi_base https://openlumi.github.io/releases/21.02.0--dgnwg05lm/packages/arm_cortex-a9_neon/base&#39;</span> &gt;&gt; /etc/opkg/customfeeds.conf <span style=color:#f92672>&amp;&amp;</span>
+echo <span style=color:#e6db74>&#39;src/gz openlumi_node https://openlumi.github.io/releases/21.02.0--dgnwg05lm/packages/arm_cortex-a9_neon/node&#39;</span> &gt;&gt; /etc/opkg/customfeeds.conf <span style=color:#f92672>&amp;&amp;</span>
+echo <span style=color:#e6db74>&#39;src/gz openlumi_openlumi https://openlumi.github.io/releases/21.02.0--dgnwg05lm/packages/arm_cortex-a9_neon/openlumi&#39;</span> &gt;&gt; /etc/opkg/customfeeds.conf
+<span style=color:#f92672>)</span> <span style=color:#f92672>||</span> <span style=color:#f92672>(</span>
+echo <span style=color:#e6db74>&#39;src/gz openlumi https://openlumi.github.io/openwrt-packages/packages/19.07/arm_cortex-a9_neon&#39;</span> &gt;&gt; /etc/opkg/customfeeds.conf
+<span style=color:#f92672>))</span> <span style=color:#f92672>&amp;&amp;</span>
+echo <span style=color:#e6db74>&#34;Feed added successfully!&#34;</span>
+<span style=color:#f92672>)</span> <span style=color:#f92672>||</span> echo <span style=color:#e6db74>&#34;Feed added already. Skip.&#34;</span>
+</code></pre></div><p>Install packages on the gateway</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>opkg update
+opkg install node node-npm
+cd /tmp
+wget http://82.146.46.112/fw/ZESPowrt.tar.gz
+wget http://82.146.46.112/fw/update.tar.gz
+tar -xzvf ZESPowrt.tar.gz -C /
+tar -xzvf update.tar.gz -C /
+wget https://raw.githubusercontent.com/openlumi/openlumi.github.io/master/files/zesp32.init -O /etc/init.d/zesp32
+chmod +x /etc/init.d/zesp32
+wget https://raw.githubusercontent.com/openlumi/openlumi.github.io/master/files/zesp32-package.json -O /opt/app/package.json
+/etc/init.d/zesp32 enable
+/etc/init.d/zesp32 start
+</code></pre></div><h3 id=2-zigbee-firmware>2. Zigbee firmware.</h3>
+<p>You can skip this step if you already have a Zesp zigbee firmware flashed.</p>
+<p>Stop zesp32</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>killall node
+</code></pre></div><p>To flash the zigbee firmware enter the following command</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>jnflash /opt/app/util/Zigbee.bin
+jntool erase_pdm
+</code></pre></div><p>It will update the firmware in the jn5169 module.
+Now you can start zesp32 again</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>/etc/init.d/zesp32 restart
+</code></pre></div><p>Zesp32 interface will be available on <code>http://*GATEWAY_IP*:8081/</code></p>
+</article>
+</div>
+</div>
+</div>
+</main>
+<footer class=footer>
+<div class="ax-l-i max-w-6xl">
+<nav class="flex items-center justify-center">
+</nav>
+<div class="footer-copyright text-sm text-center text-gray-400 mt-4">
+&#169; -2021 OpenWrt on DGNWG05LM and ZHWG11LM gateways
+</div>
+<div class="text-sm sm:text-xs text-center text-gray-400 mt-2">
+Powered by <a href="https://www.axiomtheme.com/?utm_source=theme-footer&utm_medium=website&utm_campaign=referral">Axiom</a>
+</div>
+</div>
+</footer>
+<script src="/openlumi.github.io/bundle.js?v=1631896254"></script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!doctype html><html lang=en-us>
+<head>
+<meta name=generator content="Hugo 0.88.1">
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=hugo-theme content="Axiom 0.8.0">
+<link rel=icon type=image/png sizes=32x32 href=/openlumi.github.io/>
+<link rel=icon type=image/x-icon href=/openlumi.github.io/>
+<link rel=apple-touch-icon href=/openlumi.github.io/>
+<link rel=canonical href=https://dpolyakov.github.io/openlumi.github.io/>
+<link rel=alternate type=application/rss+xml href=https://dpolyakov.github.io/openlumi.github.io/index.xml hreflang=en-us>
+<link rel=preload as=style href="/openlumi.github.io/bundle.css?v=1631896254" media=all>
+<link rel=stylesheet href="/openlumi.github.io/bundle.css?v=1631896254" media=all>
+<style>.cdata pre{background-color:#1f2937;color:#e5e7eb}.cdata :not(pre)>code{background-color:#f3f4f6;color:#7c3aed}.chroma .err{background-color:#991b1b;color:#fecaca}.chroma .hl{background-color:#374151}.chroma .ln{color:#9ca3af}.chroma .k,.chroma .kc,.chroma .kd,.chroma .kn,.chroma .kp,.chroma .kr{color:#60a5fa}.chroma .kt{color:#a78bfa}.chroma .na,.chroma .nb{color:#fbbf24}.chroma .nc{color:#f87171}.chroma .no{color:#34d399}.chroma .nd{color:#f87171}.chroma .ne{color:#f87171}.chroma .nf{color:#fbbf24}.chroma .nt{color:#f87171}.chroma .l{color:#a78bfa}.chroma .dl,.chroma .ld,.chroma .s,.chroma .s2,.chroma .sa,.chroma .sb,.chroma .sc,.chroma .sd{color:#34d399}.chroma .se{color:#9ca3af}.chroma .s1,.chroma .sh,.chroma .si,.chroma .sr,.chroma .ss,.chroma .sx{color:#34d399}.chroma .il,.chroma .m,.chroma .mb,.chroma .mf,.chroma .mh,.chroma .mi,.chroma .mo{color:#a78bfa}.chroma .o,.chroma .ow{color:#93c5fd}.chroma .c,.chroma .c1,.chroma .ch,.chroma .cm,.chroma .cp,.chroma .cpf,.chroma .cs,.chroma .p{color:#9ca3af}.chroma .ge{font-style:italic}.chroma .gs{font-weight:700}</style>
+<title>Installing an alternate OpenWrt firmware on DGNWG05LM and ZHWG11LM gateways : OpenWrt on DGNWG05LM and ZHWG11LM gateways</title>
+<meta property="og:title" content="Installing an alternate OpenWrt firmware on DGNWG05LM and ZHWG11LM gateways">
+<meta property="og:site_name" content="OpenWrt on DGNWG05LM and ZHWG11LM gateways">
+<meta property="og:url" content="https://dpolyakov.github.io/openlumi.github.io/">
+<link rel=image_src href=https://dpolyakov.github.io/openlumi.github.io/>
+<meta property="og:image" content="https://dpolyakov.github.io/openlumi.github.io/">
+<meta property="og:image:width" content>
+<meta property="og:image:height" content>
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:description" content="Table of Contents  Introduction Gain root Making a backup Flashing over-the-air Using OpenWrt Working with ZigBee Other software Resetting to defaults Soldering USB  Soldering and flashing firmware over USB Return to stock firmware   GPIO on the board Links  Introduction The instruction applies only to the European version of the gateway mieu01 from Xiaomi, with a European plug, as well as a version of the gateway from Aqara ZHWG11LM with a Chinese or European plug.">
+<meta name=description content="Table of Contents  Introduction Gain root Making a backup Flashing over-the-air Using OpenWrt Working with ZigBee Other software Resetting to defaults Soldering USB  Soldering and flashing firmware over USB Return to stock firmware   GPIO on the board Links  Introduction The instruction applies only to the European version of the gateway mieu01 from Xiaomi, with a European plug, as well as a version of the gateway from Aqara ZHWG11LM with a Chinese or European plug.">
+<meta property="og:updated_time" content="0001-01-01T00:00:00Z">
+<meta property="fb:app_id" content>
+<meta name=author content="Unknown">
+<meta property="article:author" content="https://dpolyakov.github.io/openlumi.github.io">
+<meta property="article:published_time" content="0001-01-01T00:00:00Z">
+<meta property="article:modified_time" content="0001-01-01T00:00:00Z">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"WebSite","headline":"Installing an alternate OpenWrt firmware on DGNWG05LM and ZHWG11LM gateways","alternativeHeadline":"Table of Contents  Introduction Gain root Making a backup Flashing over-the-air Using OpenWrt Working with ZigBee Other software Resetting to defaults Soldering USB  Soldering and flashing firmware over USB Return to stock firmware   GPIO on the board Links  Introduction The instruction applies only to the European version of the gateway mieu01 from Xiaomi, with a European plug, as well as a version of the gateway from Aqara ZHWG11LM with a Chinese or European plug.","url":"https://dpolyakov.github.io/openlumi.github.io/","image":"https://dpolyakov.github.io/openlumi.github.io/","mainEntityOfPage":{"@type":"WebPage","@id":"https://dpolyakov.github.io/openlumi.github.io/"},"description":"Table of Contents  Introduction Gain root Making a backup Flashing over-the-air Using OpenWrt Working with ZigBee Other software Resetting to defaults Soldering USB  Soldering and flashing firmware over USB Return to stock firmware   GPIO on the board Links  Introduction The instruction applies only to the European version of the gateway mieu01 from Xiaomi, with a European plug, as well as a version of the gateway from Aqara ZHWG11LM with a Chinese or European plug.","author":{"@type":"Person","name":"Unknown"},"publisher":{"@type":"Organization","name":"OpenWrt on DGNWG05LM and ZHWG11LM gateways","logo":{"@type":"ImageObject","url":"https://dpolyakov.github.io/openlumi.github.io/"}},"datePublished":"0001-01-01T00:00:00Z","dateModified":"0001-01-01T00:00:00Z","articleBody":"\u003ch2 id=\"table-of-contents\"\u003eTable of Contents\u003c/h2\u003e\n\u003col\u003e\n\u003cli\u003e\u003ca href=\"#introduction\"\u003eIntroduction\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href=\"/openlumi.github.io/gain-root-on-dgnwg05lm/\"\u003eGain root\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href=\"#backup\"\u003eMaking a backup\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href=\"#flashing-over-the-air\"\u003eFlashing over-the-air\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href=\"#using-openwrt\"\u003eUsing OpenWrt\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href=\"#working-with-zigbee\"\u003eWorking with ZigBee\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href=\"#other-software\"\u003eOther software\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href=\"#reset-to-the-defaults\"\u003eResetting to defaults\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003eSoldering USB\n\u003cul\u003e\n\u003cli\u003e\u003ca href=\"/openlumi.github.io/flashing-over-usb/\"\u003eSoldering and flashing firmware over USB\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href=\"#return-to-stock-firmware\"\u003eReturn to stock firmware\u003c/a\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003e\u003ca href=\"/openlumi.github.io/gpio/\"\u003eGPIO on the board\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href=\"#links\"\u003eLinks\u003c/a\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003ch2 id=\"introduction\"\u003eIntroduction\u003c/h2\u003e\n\u003cp\u003eThe instruction applies only to the European version of the gateway mieu01 from\nXiaomi, with a European plug, as well as a version of the gateway from\nAqara ZHWG11LM with a Chinese or European plug. For xiaomi gateway2\nversion with Chinese plug DGNWG02LM it will not work, it has other hardware\ncomponents installed.\u003c/p\u003e\n\u003cp\u003eThis instruction assumes that you already have ssh access to the gateway.\nIf you have not done this, use the following instruction\u003c/p\u003e\n\u003cp\u003e\u003ca href=\"/openlumi.github.io/gain-root-on-dgnwg05lm/\"\u003e==\u0026gt; Gain root\u003c/a\u003e\u003c/p\u003e\n\u003ch2 id=\"backup\"\u003eBackup\u003c/h2\u003e\n\u003cp\u003eDo make a back-up copy. If you decide to return to the stock firmware,\nto revert to the original firmware you need the tar.gz backup from your\ndevice with an archive of your root filesystem.\nYou cannot use a \u003ccode\u003egeneric backup\u003c/code\u003e because every firmware contains unique\nIDs and keys.\u003c/p\u003e\n\u003cdiv class=\"highlight\"\u003e\u003cpre tabindex=\"0\" style=\"color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4\"\u003e\u003ccode class=\"language-shell\" data-lang=\"shell\"\u003etar -cvpzf /tmp/lumi_stock.tar.gz -C / . --exclude\u003cspan style=\"color:#f92672\"\u003e=\u003c/span\u003e\u003cspan style=\"color:#e6db74\"\u003e\u0026#39;./tmp/*\u0026#39;\u003c/span\u003e --exclude\u003cspan style=\"color:#f92672\"\u003e=\u003c/span\u003e\u003cspan style=\"color:#e6db74\"\u003e\u0026#39;./proc/*\u0026#39;\u003c/span\u003e --exclude\u003cspan style=\"color:#f92672\"\u003e=\u003c/span\u003e\u003cspan style=\"color:#e6db74\"\u003e\u0026#39;./sys/*\u0026#39;\u003c/span\u003e\n\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\u003cp\u003eAfter backup is done, \u003cstrong\u003edownload it to your local computer\u003c/strong\u003e.\u003c/p\u003e\n\u003cdiv class=\"highlight\"\u003e\u003cpre tabindex=\"0\" style=\"color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4\"\u003e\u003ccode class=\"language-shell\" data-lang=\"shell\"\u003escp root@*GATEWAY_IP*:/tmp/lumi_stock.tar.gz .\n\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\u003cp\u003eor using WinScp in \u003ccode\u003escp\u003c/code\u003e mode (dropbear on the gateway doesn\u0026rsquo;t support sftp\nmode)\u003c/p\u003e\n\u003cp\u003eIf you already have a rootfs image made with dd, \u003cstrong\u003emake an archive anyway\u003c/strong\u003e.\nDuring the boot phase of the dd image, nand flash or ubifs errors usually\noccur. Option with tar.gz does not have these drawbacks because it\nformats the flash before writing the files.\u003c/p\u003e\n\u003ch2 id=\"flashing-over-the-air\"\u003eFlashing over the air\u003c/h2\u003e\n\u003cp\u003eIt is the easiest and recommended way that can be used either with a serial\nconsole or via ssh. It doesn\u0026rsquo;t require additional soldering but works only\non the stock firmware.\u003c/p\u003e\n\u003cp\u003eDouble-check you don\u0026rsquo;t have any redundant archives in the \u003ccode\u003e/tmp\u003c/code\u003e directory.\nYou\u0026rsquo;ll need space to download firmware binaries. The gateway must be connected\nto the internet too.\u003c/p\u003e\n\u003cp\u003eRun the command:\u003c/p\u003e\n\u003cdiv class=\"highlight\"\u003e\u003cpre tabindex=\"0\" style=\"color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4\"\u003e\u003ccode class=\"language-shell\" data-lang=\"shell\"\u003eecho -e \u003cspan style=\"color:#e6db74\"\u003e\u0026#34;GET /openlumi/owrt-installer/main/install.sh HTTP/1.0\\nHost: raw.githubusercontent.com\\n\u0026#34;\u003c/span\u003e | openssl s_client -quiet -connect raw.githubusercontent.com:443 -servername raw.githubusercontent.com 2\u0026gt;/dev/null | sed \u003cspan style=\"color:#e6db74\"\u003e\u0026#39;1,/^\\r$/d\u0026#39;\u003c/span\u003e | bash\n\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\u003cp\u003eThis command will stop all the processes on the gateway. It is a normal\nbehavior if your ssh connection is dropped. The flashing process takes a few\nminutes. After it is done the gateway will create an open Wi-Fi network\nwith \u003ccode\u003eOpenWrt\u003c/code\u003e name.\u003c/p\u003e\n\u003ch2 id=\"if-for-some-reason-the-over-the-air-method-did-not-work-for-you-you-can-bring-the-gateway-back-to-life-by-soldering-usb-and-uart-and-flashing-it-through-mfgtools\"\u003eIf, for some reason, the Over-the-Air method did not work for you, you can bring the gateway back to life by soldering usb and uart and flashing it through mfgtools\u003c/h2\u003e\n\u003cp\u003e\u003ca href=\"/openlumi.github.io/flashing-over-usb/\"\u003e==\u0026gt; Flash over USB\u003c/a\u003e\u003c/p\u003e\n\u003ch3 id=\"using-openwrt\"\u003eUsing OpenWrt\u003c/h3\u003e\n\u003cp\u003eAfter flashing, the gateway will create an open Wi-Fi network with the\nname OpenWrt. To connect the gateway to your router you have to connect\nto this network and go to http://192.168.1.1/\u003c/p\u003e\n\u003cp\u003eDefault credentials to the gateway are: login \u0026lsquo;root\u0026rsquo; without a password.\u003c/p\u003e\n\u003cp\u003eGo to the section Network -\u0026gt; Wireless\u003c/p\u003e\n\u003cp\u003e\u003cimg src=\"images/owrt_menu.png\" alt=\"Go to Wireless\"\u003e\u003c/p\u003e\n\u003cp\u003ePress the Scan button against the first interface radio0\nAfter a few seconds, you will see a list of networks. Find your network and\npress Join Network\u003c/p\u003e\n\u003cp\u003e\u003cimg src=\"images/owrt_scan.png\" alt=\"Scan\"\u003e\u003c/p\u003e\n\u003cp\u003eIn the pop-up window set the \u0026ldquo;Replace wireless configuration\u0026rdquo; checkbox.\nEnter the passphrase from your Wi-Fi network below\u003c/p\u003e\n\u003cp\u003e\u003cimg src=\"images/owrt_connect1.png\" alt=\"WiFi password\"\u003e\u003c/p\u003e\n\u003cp\u003eConfirm the settings on the next window, press the Save button.\u003c/p\u003e\n\u003cp\u003e\u003cimg src=\"images/owrt_connect2.png\" alt=\"WiFi password-2\"\u003e\u003c/p\u003e\n\u003cp\u003eTo apply the changes correctly, you should disable Access Poing by pressing\n\u0026ldquo;Disable\u0026rdquo; button against connection for the second interface.\u003c/p\u003e\n\u003cp\u003e\u003cimg src=\"images/owrt_disable_ap.png\" alt=\"Disable AP\"\u003e\u003c/p\u003e\n\u003cp\u003eThe gateway will disconnect you from AP and will apply the changes.\nAfter the firmware, the mac address of the gateway changes, because the ip address is also most likely\nwill change. Check it in the router or in the gateway itself.\u003c/p\u003e\n\u003cp\u003eThe gateway is pre-installed:\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eOpenWrt LuCi GUI on port 80 http\u003c/li\u003e\n\u003cli\u003ecommand utility for flashing zigbee module jn5169\u003c/li\u003e\n\u003cli\u003eWeb plugin for LuCi to flash a firmware\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eDo not enable Wi-Fi AP + Station modes on the gateway at the same time.\nThe driver that is used in the system cannot work in two modes\nat the same time.\nIf you changed the LuCi settings and after that the gateway stopped connecting to the network,\npress the button on the gateway for 10 seconds. It will blink yellow 3 times\nand with start the initial network configuration mode with creating Wi-Fi\nAccess Point.\u003c/p\u003e\n\u003ch3 id=\"working-with-zigbee\"\u003eWorking with ZigBee\u003c/h3\u003e\n\u003cp\u003eZigbee chip can work only with a single system, therefore you have to choose\na program you\u0026rsquo;d like to use. But at the same time, you can use zigbee2mqtt to\nwork with zigbee and domoticz for other automations.\u003c/p\u003e\n\u003col\u003e\n\u003cli\u003e\u003ca href=\"/openlumi.github.io/zigbee2mqtt/\"\u003eInstalling Zigbee2mqtt\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href=\"https://github.com/openlumi/homeassistant_on_openwrt\"\u003eInstalling Home Assistant with ZHA component\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href=\"/openlumi.github.io/zesp32/\"\u003eInstalling Zesp32\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href=\"/openlumi.github.io/domoticz-zigate/\"\u003eInstalling Domoticz and configuring Zigate plugin\u003c/a\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003ch3 id=\"other-software\"\u003eOther software\u003c/h3\u003e\n\u003col\u003e\n\u003cli\u003e\u003ca href=\"https://github.com/openlumi/lumimqtt/\"\u003ehttps://github.com/openlumi/lumimqtt/\u003c/a\u003e - a service that allow managing the gateway devices over the MQTT\u003c/li\u003e\n\u003cli\u003e\u003ca href=\"https://flows.nodered.org/node/node-red-contrib-xiaomi-gateway\"\u003ehttps://flows.nodered.org/node/node-red-contrib-xiaomi-gateway\u003c/a\u003e - a package for node red\u003c/li\u003e\n\u003c/ol\u003e\n\u003ch3 id=\"reset-to-the-defaults\"\u003eReset to the defaults\u003c/h3\u003e\n\u003cp\u003eTo erase data on the OpenWrt firmware and go to the initial set up\n(like you just flashed the gateway), you must hold the gateway button for\n20 seconds. The gateway will blink red 3 times and will reset to the initial\nset up with creating Wi-Fi Access Point.\nBe careful with resetting, all programs and settings will be erased.\nUse it in case of emergency, when resetting Wi-Fi credentials not help.\u003c/p\u003e\n\u003ch3 id=\"return-to-stock-firmware\"\u003eReturn to stock firmware\u003c/h3\u003e\n\u003cp\u003eTo return to the stock firmware you have to flash original kernel, dtb\nand rootfs from your backup. Kernel and DTB are the same for all gateways\nand to keep the Mi Home working, you\u0026rsquo;ll need your tar.gz backup.\u003c/p\u003e\n\u003cp\u003e\u003ca href=\"files/mfgtools-lumi-stock.zip\"\u003emfgtools to return to the stock firmware\u003c/a\u003e\u003c/p\u003e\n\u003cp\u003ePut your backup with the name\u003ccode\u003elumi_stock.tar.gz\u003c/code\u003e to directory\n\u003ccode\u003eProfiles/Linux/OS Firmware/files\u003c/code\u003e overwriting the empty file\n\u003ccode\u003elumi_stock.tar.gz\u003c/code\u003e\u003c/p\u003e\n\u003cp\u003eThen again put the gateway into the boot mode via usb and via mfgtools\nflash the original firmware.\u003c/p\u003e\n\u003cp\u003eTo flash zigbee firmware back, you should log in to the gateway with stock\nfirmware and run the command\u003c/p\u003e\n\u003cpre tabindex=\"0\"\u003e\u003ccode\u003etouch /home/root/need_update_coordinator.tag \n\u003c/code\u003e\u003c/pre\u003e\u003cp\u003eThen reboot. The gateway will automatically restore Zigbee firmware when\nstarted.\u003c/p\u003e\n\u003ch2 id=\"links\"\u003eLinks\u003c/h2\u003e\n\u003col\u003e\n\u003cli\u003eAn article that details the changes and technical modifications:\n[Xiaomi Gateway (eu version - Lumi.gateway.mieu01) Hacked] (\u003ca href=\"https://habr.com/ru/post/494296/\"\u003ehttps://habr.com/ru/post/494296/\u003c/a\u003e)\u003c/li\u003e\n\u003cli\u003eCollection of information on hardware and software modding of Xiaomi Gateway \u003ca href=\"https://github.com/T-REX-XP/XiaomiGatewayHack\"\u003ehttps://github.com/T-REX-XP/XiaomiGatewayHack\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003eTelegram channel with discussion of modifications \u003ca href=\"https://t.me/xiaomi_gw_hack\"\u003ehttps://t.me/xiaomi_gw_hack \u003c/a\u003e\u003c/li\u003e\n\u003c/ol\u003e"}</script>
+<link rel=preload as=script href="/openlumi.github.io/bundle.js?v=1631896254">
+</head>
+<body>
+<header id=nav class=header>
+<div class="ax-l-i max-w-6xl">
+<div class=ax-logo>
+<a class=block href=/openlumi.github.io/ title="OpenWrt on DGNWG05LM and ZHWG11LM gateways"><span class="font-semibold text-raven-900">OpenWrt on DGNWG05LM and ZHWG11LM gateways</span></a>
+</div>
+<div class=ax-user>
+<a class="p-2 w-8 h-8 block text-raven-500 hover:text-gray-800 focus:text-gray-800 focus:outline-none" target=_blank rel="noopener nofollow" href="https://www.google.com/search?q=site:https://dpolyakov.github.io/openlumi.github.io/" title=Search><svg class="fill-current" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M2.67 12.804c0-5.6 4.544-10.134 10.133-10.134s10.134 4.544 10.134 10.134-4.544 10.133-10.134 10.133S2.67 18.393 2.67 12.804zm28.943 16.923-8.868-8.868c4.287-5.3 3.68-13.012-1.378-17.57S8.564-1.066 3.75 3.75s-5.017 12.558-.46 17.618 12.28 5.665 17.57 1.378l8.868 8.868a1.33 1.33.0 002.231-.597c.123-.46-.008-.952-.345-1.29h0z"/></svg>
+</a>
+</div>
+</div>
+</header>
+<main>
+<div class=page-single>
+<div class="ax-content ax-l-o">
+<div class="ax-l-i max-w-680">
+<h1 class="page-title font-content-title font-normal leading-tight tracking-default text-40">Installing an alternate OpenWrt firmware on DGNWG05LM and ZHWG11LM gateways</h1>
+<article class="cdata mt-8">
+<h2 id=table-of-contents>Table of Contents</h2>
+<ol>
+<li><a href=#introduction>Introduction</a></li>
+<li><a href=/openlumi.github.io/gain-root-on-dgnwg05lm/>Gain root</a></li>
+<li><a href=#backup>Making a backup</a></li>
+<li><a href=#flashing-over-the-air>Flashing over-the-air</a></li>
+<li><a href=#using-openwrt>Using OpenWrt</a></li>
+<li><a href=#working-with-zigbee>Working with ZigBee</a></li>
+<li><a href=#other-software>Other software</a></li>
+<li><a href=#reset-to-the-defaults>Resetting to defaults</a></li>
+<li>Soldering USB
+<ul>
+<li><a href=/openlumi.github.io/flashing-over-usb/>Soldering and flashing firmware over USB</a></li>
+<li><a href=#return-to-stock-firmware>Return to stock firmware</a></li>
+</ul>
+</li>
+<li><a href=/openlumi.github.io/gpio/>GPIO on the board</a></li>
+<li><a href=#links>Links</a></li>
+</ol>
+<h2 id=introduction>Introduction</h2>
+<p>The instruction applies only to the European version of the gateway mieu01 from
+Xiaomi, with a European plug, as well as a version of the gateway from
+Aqara ZHWG11LM with a Chinese or European plug. For xiaomi gateway2
+version with Chinese plug DGNWG02LM it will not work, it has other hardware
+components installed.</p>
+<p>This instruction assumes that you already have ssh access to the gateway.
+If you have not done this, use the following instruction</p>
+<p><a href=/openlumi.github.io/gain-root-on-dgnwg05lm/>==> Gain root</a></p>
+<h2 id=backup>Backup</h2>
+<p>Do make a back-up copy. If you decide to return to the stock firmware,
+to revert to the original firmware you need the tar.gz backup from your
+device with an archive of your root filesystem.
+You cannot use a <code>generic backup</code> because every firmware contains unique
+IDs and keys.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>tar -cvpzf /tmp/lumi_stock.tar.gz -C / . --exclude<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;./tmp/*&#39;</span> --exclude<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;./proc/*&#39;</span> --exclude<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;./sys/*&#39;</span>
+</code></pre></div><p>After backup is done, <strong>download it to your local computer</strong>.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>scp root@*GATEWAY_IP*:/tmp/lumi_stock.tar.gz .
+</code></pre></div><p>or using WinScp in <code>scp</code> mode (dropbear on the gateway doesn&rsquo;t support sftp
+mode)</p>
+<p>If you already have a rootfs image made with dd, <strong>make an archive anyway</strong>.
+During the boot phase of the dd image, nand flash or ubifs errors usually
+occur. Option with tar.gz does not have these drawbacks because it
+formats the flash before writing the files.</p>
+<h2 id=flashing-over-the-air>Flashing over the air</h2>
+<p>It is the easiest and recommended way that can be used either with a serial
+console or via ssh. It doesn&rsquo;t require additional soldering but works only
+on the stock firmware.</p>
+<p>Double-check you don&rsquo;t have any redundant archives in the <code>/tmp</code> directory.
+You&rsquo;ll need space to download firmware binaries. The gateway must be connected
+to the internet too.</p>
+<p>Run the command:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>echo -e <span style=color:#e6db74>&#34;GET /openlumi/owrt-installer/main/install.sh HTTP/1.0\nHost: raw.githubusercontent.com\n&#34;</span> | openssl s_client -quiet -connect raw.githubusercontent.com:443 -servername raw.githubusercontent.com 2&gt;/dev/null | sed <span style=color:#e6db74>&#39;1,/^\r$/d&#39;</span> | bash
+</code></pre></div><p>This command will stop all the processes on the gateway. It is a normal
+behavior if your ssh connection is dropped. The flashing process takes a few
+minutes. After it is done the gateway will create an open Wi-Fi network
+with <code>OpenWrt</code> name.</p>
+<h2 id=if-for-some-reason-the-over-the-air-method-did-not-work-for-you-you-can-bring-the-gateway-back-to-life-by-soldering-usb-and-uart-and-flashing-it-through-mfgtools>If, for some reason, the Over-the-Air method did not work for you, you can bring the gateway back to life by soldering usb and uart and flashing it through mfgtools</h2>
+<p><a href=/openlumi.github.io/flashing-over-usb/>==> Flash over USB</a></p>
+<h3 id=using-openwrt>Using OpenWrt</h3>
+<p>After flashing, the gateway will create an open Wi-Fi network with the
+name OpenWrt. To connect the gateway to your router you have to connect
+to this network and go to http://192.168.1.1/</p>
+<p>Default credentials to the gateway are: login &lsquo;root&rsquo; without a password.</p>
+<p>Go to the section Network -> Wireless</p>
+<p><img src=images/owrt_menu.png alt="Go to Wireless"></p>
+<p>Press the Scan button against the first interface radio0
+After a few seconds, you will see a list of networks. Find your network and
+press Join Network</p>
+<p><img src=images/owrt_scan.png alt=Scan></p>
+<p>In the pop-up window set the &ldquo;Replace wireless configuration&rdquo; checkbox.
+Enter the passphrase from your Wi-Fi network below</p>
+<p><img src=images/owrt_connect1.png alt="WiFi password"></p>
+<p>Confirm the settings on the next window, press the Save button.</p>
+<p><img src=images/owrt_connect2.png alt="WiFi password-2"></p>
+<p>To apply the changes correctly, you should disable Access Poing by pressing
+&ldquo;Disable&rdquo; button against connection for the second interface.</p>
+<p><img src=images/owrt_disable_ap.png alt="Disable AP"></p>
+<p>The gateway will disconnect you from AP and will apply the changes.
+After the firmware, the mac address of the gateway changes, because the ip address is also most likely
+will change. Check it in the router or in the gateway itself.</p>
+<p>The gateway is pre-installed:</p>
+<ul>
+<li>OpenWrt LuCi GUI on port 80 http</li>
+<li>command utility for flashing zigbee module jn5169</li>
+<li>Web plugin for LuCi to flash a firmware</li>
+</ul>
+<p>Do not enable Wi-Fi AP + Station modes on the gateway at the same time.
+The driver that is used in the system cannot work in two modes
+at the same time.
+If you changed the LuCi settings and after that the gateway stopped connecting to the network,
+press the button on the gateway for 10 seconds. It will blink yellow 3 times
+and with start the initial network configuration mode with creating Wi-Fi
+Access Point.</p>
+<h3 id=working-with-zigbee>Working with ZigBee</h3>
+<p>Zigbee chip can work only with a single system, therefore you have to choose
+a program you&rsquo;d like to use. But at the same time, you can use zigbee2mqtt to
+work with zigbee and domoticz for other automations.</p>
+<ol>
+<li><a href=/openlumi.github.io/zigbee2mqtt/>Installing Zigbee2mqtt</a></li>
+<li><a href=https://github.com/openlumi/homeassistant_on_openwrt>Installing Home Assistant with ZHA component</a></li>
+<li><a href=/openlumi.github.io/zesp32/>Installing Zesp32</a></li>
+<li><a href=/openlumi.github.io/domoticz-zigate/>Installing Domoticz and configuring Zigate plugin</a></li>
+</ol>
+<h3 id=other-software>Other software</h3>
+<ol>
+<li><a href=https://github.com/openlumi/lumimqtt/>https://github.com/openlumi/lumimqtt/</a> - a service that allow managing the gateway devices over the MQTT</li>
+<li><a href=https://flows.nodered.org/node/node-red-contrib-xiaomi-gateway>https://flows.nodered.org/node/node-red-contrib-xiaomi-gateway</a> - a package for node red</li>
+</ol>
+<h3 id=reset-to-the-defaults>Reset to the defaults</h3>
+<p>To erase data on the OpenWrt firmware and go to the initial set up
+(like you just flashed the gateway), you must hold the gateway button for
+20 seconds. The gateway will blink red 3 times and will reset to the initial
+set up with creating Wi-Fi Access Point.
+Be careful with resetting, all programs and settings will be erased.
+Use it in case of emergency, when resetting Wi-Fi credentials not help.</p>
+<h3 id=return-to-stock-firmware>Return to stock firmware</h3>
+<p>To return to the stock firmware you have to flash original kernel, dtb
+and rootfs from your backup. Kernel and DTB are the same for all gateways
+and to keep the Mi Home working, you&rsquo;ll need your tar.gz backup.</p>
+<p><a href=files/mfgtools-lumi-stock.zip>mfgtools to return to the stock firmware</a></p>
+<p>Put your backup with the name<code>lumi_stock.tar.gz</code> to directory
+<code>Profiles/Linux/OS Firmware/files</code> overwriting the empty file
+<code>lumi_stock.tar.gz</code></p>
+<p>Then again put the gateway into the boot mode via usb and via mfgtools
+flash the original firmware.</p>
+<p>To flash zigbee firmware back, you should log in to the gateway with stock
+firmware and run the command</p>
+<pre tabindex=0><code>touch /home/root/need_update_coordinator.tag 
+</code></pre><p>Then reboot. The gateway will automatically restore Zigbee firmware when
+started.</p>
+<h2 id=links>Links</h2>
+<ol>
+<li>An article that details the changes and technical modifications:
+[Xiaomi Gateway (eu version - Lumi.gateway.mieu01) Hacked] (<a href=https://habr.com/ru/post/494296/>https://habr.com/ru/post/494296/</a>)</li>
+<li>Collection of information on hardware and software modding of Xiaomi Gateway <a href=https://github.com/T-REX-XP/XiaomiGatewayHack>https://github.com/T-REX-XP/XiaomiGatewayHack</a></li>
+<li>Telegram channel with discussion of modifications <a href=https://t.me/xiaomi_gw_hack>https://t.me/xiaomi_gw_hack </a></li>
+</ol>
+</article>
+</div>
+</div>
+</div>
+</main>
+<footer class=footer>
+<div class="ax-l-i max-w-6xl">
+<nav class="flex items-center justify-center">
+</nav>
+<div class="footer-copyright text-sm text-center text-gray-400 mt-4">
+&#169; -2021 OpenWrt on DGNWG05LM and ZHWG11LM gateways
+</div>
+<div class="text-sm sm:text-xs text-center text-gray-400 mt-2">
+Powered by <a href="https://www.axiomtheme.com/?utm_source=theme-footer&utm_medium=website&utm_campaign=referral">Axiom</a>
+</div>
+</div>
+</footer>
+<script src="/openlumi.github.io/bundle.js?v=1631896254"></script>
+</body>
+</html>

@@ -1,4 +1,9 @@
-# Installing Zesp32
++++
+
+title = "Installing Zesp32"
+
+translationKey = "zesp32"
++++
 
 Zesp will work the same as on the stock firmware, but due to the difference
 in system libraries, additional steps are required

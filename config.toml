@@ -1,0 +1,27 @@
+baseURL = 'https://dpolyakov.github.io/openlumi.github.io/'
+
+title = 'OpenWrt on DGNWG05LM and ZHWG11LM gateways'
+theme = 'axiom'
+
+
+defaultContentLanguage = 'en'
+
+[languages]
+  [languages.en]
+    title = 'OpenWrt on DGNWG05LM and ZHWG11LM gateways'
+    weight = 1
+    contentDir = 'content/en'
+
+  [languages.ru]
+    title = 'OpenWrt на шлюзах DGNWG05LM и ZHWG11LM'
+    weight = 2
+    contentDir = 'content/ru'
+
+
+paginate = 2
+canonifyURLs = true
+summaryLength = 40
+rssLimit = 100
+enableEmoji = true
+enableRobotsTXT = true
+pluralizelisttitles = false
